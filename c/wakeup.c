@@ -220,8 +220,7 @@ void init_cmd()
 {
     // #局域网连接openssh服务器，进行关机操作
     char appds[1024];
-    cmdos = snprintf(appds,sizeof(appds), "sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s", config.commands);
-    snprintf(cmd_shutdown, sizeof(cmd_shutdown), cmdos, config.password, config.user, config.ip);
+    snprintf(cmd_shutdown, sizeof(cmd_shutdown), snprintf(appds,sizeof(appds), "sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s", config.commands), config.password, config.user, config.ip);
     // 打印命令
     printf("cmd_shutdown: %s\n", cmd_shutdown);
 }
