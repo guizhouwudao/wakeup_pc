@@ -52,12 +52,9 @@ try:
 	ssh_ip = config.get('openssh', 'ip').strip('"')
 	ssh_user = config.get('openssh', 'user').strip('"')
 	ssh_password = config.get('openssh', 'password').strip('"')
-	ssh_commands = config.get('openssh', 'commands').strip('"')
-	# 局域网连接openssh服务器，进行关机操作 更改配置将关机指令由客户端自定义适配不同操作系统关机"shutdown -s -t 10"
+	# 局域网连接openssh服务器，进行关机操作
 	cmd_shutdown = 'sshpass -p %(password)s ssh -A -g -o StrictHostKeyChecking=no %(user)s@%(ip)s "shutdown -s -t 10"'%{"password": ssh_password, "user": ssh_user, "ip": ssh_ip}
 	print(f"cmd_shutdown={cmd_shutdown}")
-	#cmd_shutdown = "sshpass -p %(password)s ssh -A -g -o StrictHostKeyChecking=no %(user)s@%(ip)s %(commands)s"%{"password": ssh_password, "user": ssh_user, "ip": ssh_ip, "commands": ssh_commands}
-	#print(f"cmd_shutdown={cmd_shutdown}")
 except:
 	time.sleep(2)
 	print("ERROR: No valid configuration was read!!!\nPlease check config.ini!\nProgram exit")
