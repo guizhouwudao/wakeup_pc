@@ -31,7 +31,7 @@ Config config;
 
 // 执行命令
 char cmd_shutdown[800];
-char cmdos[MAX_VALUE_LENGTH];
+char cmdos[800];
 // 套接字持续化连接
 int tcp_client_socket = -1;
 
@@ -218,7 +218,7 @@ int wol(const char *mac)
 void init_cmd()
 {
     // #局域网连接openssh服务器，进行关机操作
-    cmdos = strcat("sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s",config.commands);
+    cmdos = snprintf("sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s",config.commands);
     snprintf(cmd_shutdown, sizeof(cmd_shutdown), cmdos, config.password, config.user, config.ip);
     // 打印命令
     printf("cmd_shutdown: %s\n", cmd_shutdown);
