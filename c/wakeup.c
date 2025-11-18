@@ -31,7 +31,7 @@ Config config;
 
 // 执行命令
 char cmd_shutdown[800];
-char = cmdos[MAX_VALUE_LENGTH];
+char cmdos[MAX_VALUE_LENGTH];
 // 套接字持续化连接
 int tcp_client_socket = -1;
 
