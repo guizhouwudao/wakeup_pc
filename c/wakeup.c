@@ -145,6 +145,11 @@ void parse_config(const char *filename, Config *cfg)
                 strncpy(cfg->password, value, MAX_VALUE_LENGTH - 1);
                 clear_mark(cfg->password);
             }
+            else if(strcmp(key, "commands") == 0) 
+            {
+                strncpy(cfg->commands, value, MAX_VALUE_LENGTH - 1);
+                clear_mark(cfg->commands);
+            }
         }
     }
     fclose(file);
