@@ -11,7 +11,7 @@
 
 - x86/arm64
   ```bash
-  docker pull yexundao/wakeup_pc:latest
+  docker pull protokc/wakeup_pc:latest-c
   ```
 
   - 使用`Publish Docker image`手动构建或直接打上tags自动构建
@@ -19,7 +19,7 @@
 
 - arm64
   ```bash
-  docker pull yexundao/wakeup_pc:latest-arm
+  docker pull protokc/wakeup_pc:latest-c-arm
   ```
 
   - 使用`Publish Docker image by self-hosted runner`手动构建下才使用这种镜像。
@@ -62,7 +62,7 @@
         -v /vol1/1000/docker/wakeup/log.txt:/app/log.txt \
         --restart always \
         --network host \
-        yexundao/wakeup_pc:latest
+        protokc/wakeup_pc:latest-c
       ```
       或在想要的位置上创建docker-compose.yml文件
 
@@ -71,7 +71,7 @@
       
       services:
         wakeup_pc:
-          image: yexundao/wakeup_pc:latest
+          image: protokc/wakeup_pc:latest-c
           container_name: wakeup_pc
           restart: always
           network_mode: host
@@ -87,7 +87,7 @@
         -v /root/soft/wakeup/log.txt:/app/log.txt \
         --restart always \
         --network host \
-        yexundao/wakeup_pc:latest
+        protokc/wakeup_pc:latest-c
       ```
 
       或自建runner版本
@@ -99,7 +99,7 @@
         -v /root/soft/wakeup/log.txt:/app/log.txt \
         --restart always \
         --network host \
-        yexundao/wakeup_pc:latest-arm
+        protokc/wakeup_pc:latest-c-arm
       ```
 
 - 仅配置命令
@@ -109,7 +109,7 @@
     -v /vol1/1000/docker/wakeup/config.ini:/app/config.ini \
     --restart always \
     --network host \
-    yexundao/wakeup_pc:latest
+    protokc/wakeup_pc:latest-c
   ```
 
 - 需要先根据自己的具体信息配置好config.ini文件
