@@ -24,6 +24,7 @@ typedef struct
     char ip[MEDIUM_VALUE_LENGTH];
     char user[MAX_VALUE_LENGTH];
     char password[MAX_VALUE_LENGTH];
+    char command[MAX_VALUE_LENGTH];
 } Config;
 
 Config config;
@@ -43,6 +44,7 @@ void clear_config(Config *cfg)
     memset(cfg->ip, 0, MAX_VALUE_LENGTH);
     memset(cfg->user, 0, MAX_VALUE_LENGTH);
     memset(cfg->password, 0, MAX_VALUE_LENGTH);
+    memset(cfg->command, 0, MAX_VALUE_LENGTH);
 }
 
 // 去除引号
@@ -216,7 +218,7 @@ int wol(const char *mac)
 void init_cmd()
 {
     // #局域网连接openssh服务器，进行关机操作
-    snprintf(cmd_shutdown, sizeof(cmd_shutdown), "sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s 'poweroff'", config.password, config.user, config.ip);
+    snprintf(cmd_shutdown, sizeof(cmd_shutdown), "sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s",config.command, config.password, config.user, config.ip);
     // 打印命令
     printf("cmd_shutdown: %s\n", cmd_shutdown);
 }
