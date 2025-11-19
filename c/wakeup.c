@@ -150,7 +150,7 @@ void parse_config(const char *filename, Config *cfg)
                 strncpy(cfg->commands, value, MAX_VALUE_LENGTH - 1);
                 clear_mark(cfg->commands);
             }
-            else if(strcmp(key, "commands") == 0) 
+            else if(strcmp(key, "cmdend") == 0) 
             {
                 strncpy(cfg->cmdend, value, MAX_VALUE_LENGTH - 1);
                 clear_mark(cfg->cmdend);
@@ -229,7 +229,7 @@ int wol(const char *mac)
 void init_cmd()
 {
     // #局域网连接openssh服务器，进行关机操作
-    snprintf(cmd_shutdown, sizeof(cmd_shutdown),"sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s %s", config.password, config.user, config.ip, config.commands, config.cmdend);
+    snprintf(cmd_shutdown, sizeof(cmd_shutdown),"sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s %s %s", config.password, config.user, config.ip, config.commands, config.cmdend);
     // 打印命令
     printf("cmd_shutdown: %s\n", cmd_shutdown);
 }
