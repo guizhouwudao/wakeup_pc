@@ -229,7 +229,7 @@ int wol(const char *mac)
 void init_cmd()
 {
     // #局域网连接openssh服务器，进行关机操作
-    snprintf(cmd_shutdown, sizeof(cmd_shutdown),"sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s %s/n%s", config.password, config.user, config.ip, config.commands, config.cmdend);
+    snprintf(cmd_shutdown, sizeof(cmd_shutdown),"sshpass -p %s ssh -A -g -o StrictHostKeyChecking=no %s@%s %s", config.password, config.user, config.ip, config.commands, config.cmdend);
     // 打印命令
     printf("cmd_shutdown: %s\n", cmd_shutdown);
 }
